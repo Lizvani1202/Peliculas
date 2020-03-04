@@ -4,17 +4,33 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_register_video"
+            android:icon="@drawable/ic_add_circle_black_24dp"
+            android:title="Resgistrar video" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_register_new_copies"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="Registrar nuevas copias" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/ic_delete_black_24dp"
+            android:title="Baja de video" />
+        <item
+            android:id="@+id/nav_register_client"
+            android:icon="@drawable/ic_person_add_black_24dp"
+            android:title="Registrar cliente"
+            />
+        <item
+            android:id="@+id/nav_edit_client"
+            android:icon="@drawable/ic_person_add_black_24dp"
+            android:title="Registrar cliente"
+            />
+        <item
+            android:id="@+id/nav_video_lend"
+            android:icon="@drawable/ic_redo_black_24dp"
+            android:title="prestamo video"
+            />
     </group>
 </menu>
