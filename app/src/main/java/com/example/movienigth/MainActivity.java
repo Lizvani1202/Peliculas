@@ -1,7 +1,9 @@
 package com.example.movienigth;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.movienigth.Main.MainRegisterClientActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -85,17 +87,19 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_register_video) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_register_new_copies) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_delete_video) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_register_client) {
+            Intent intent = new Intent(MainActivity.this, MainRegisterClientActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_send) {
+        } else if(id == R.id.nav_edit_person){
+
+        }else if (id == R.id.nav_lend_video){
 
         }
 
