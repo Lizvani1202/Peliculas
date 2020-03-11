@@ -23,7 +23,14 @@ public class AdminDataBase extends SQLiteOpenHelper {
                     "                    first_name VARCHAR(30)," +
                     "                    last_name VARCHAR(30)," +
                     "                    cellphone VARCHAR(30)," +
-                    "                    birthdate DATE   ";
+                    "                    birthdate TEXT," +
+                    "                    email VARCHAR(100),"+
+                    "                    address VARCHAR(100),"+
+                    "                    latitude DECIMAL(9,6),"+
+                    "                    longitude DECIMAL(9,6),"+
+                    "                    user VARCHAR(30),"+
+                    "                    register_date INTEGER,"+
+                    "                    status INTEGER)";
         db.execSQL(sql);
 
     }
