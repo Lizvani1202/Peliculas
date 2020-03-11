@@ -1,9 +1,12 @@
 package com.example.movienigth.SQLite;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.example.movienigth.Model.ModelClient;
 
 public class AdminDataBase extends SQLiteOpenHelper {
 
@@ -19,17 +22,15 @@ public class AdminDataBase extends SQLiteOpenHelper {
 
         db.execSQL("PRAGMA foreign_key = ON");
         String sql ="CREATE TABLE client(id_client INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "                    ci VARCHAR(30),"+
-                    "                    first_name VARCHAR(30)," +
-                    "                    last_name VARCHAR(30)," +
-                    "                    cellphone VARCHAR(30)," +
+                    "                    ci TEXT,"+
+                    "                    first_name TEXT," +
+                    "                    last_name TEXT," +
+                    "                    cellphone INTEGER," +
                     "                    birthdate TEXT," +
-                    "                    email VARCHAR(100),"+
-                    "                    address VARCHAR(100),"+
-                    "                    latitude DECIMAL(9,6),"+
-                    "                    longitude DECIMAL(9,6),"+
-                    "                    user VARCHAR(30),"+
-                    "                    register_date INTEGER,"+
+                    "                    email TEXT,"+
+                    "                    address TEXT,"+
+                    "                    latitude TEXT,"+
+                    "                    longitude TEXT,"+
                     "                    status INTEGER)";
         db.execSQL(sql);
 
@@ -37,6 +38,21 @@ public class AdminDataBase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS client");
+    }
 
+    public void addClient(ModelClient modelClient){
+        ContentValues values = new ContentValues();
+        values.put("id_client",modelClient.getId_client());
+        values.put("ci",modelClient.getCi());
+        values.put("first_name",modelClient.getFirst_name());
+        values.put("last_name",modelClient.getLast_name());
+        values.put("cellphone",modelClient.getCellphone());
+        values.put("birthdate",modelClient.getBirthdate());
+        values.put("email",modelClient.getEmail());
+        values.put("address",modelClient.getAddress());
+        values.put("latitude",modelClient.getLatitude());
+        values.put("longitude",modelClient.getLongitude());
+        values.put("status",modelClient.getStatus());
     }
 }
