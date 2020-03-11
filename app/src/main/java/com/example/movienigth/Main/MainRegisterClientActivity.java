@@ -7,14 +7,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.movienigth.MainActivity;
+import com.example.movienigth.Model.ModelClient;
 import com.example.movienigth.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,17 +36,28 @@ import java.util.Calendar;
 public class MainRegisterClientActivity extends AppCompatActivity {
 
     Button btnagregar, btncancelar,btnmapa,btnfecha;
-    private TextView tvdate;
+    EditText etnombre,etapellido,etci,etcelular,etemail,etdireccion,etlatitud,etlongitud;
+    private EditText etdate;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_register_client);
-        tvdate = (TextView)findViewById(R.id.tvfecha);
-        btnfecha = (Button)findViewById(R.id.btndate);
+
+        etnombre    = (EditText)findViewById(R.id.etaddfirstname);
+        etapellido  = (EditText)findViewById(R.id.etaddlastname);
+        etci        = (EditText)findViewById(R.id.etaddci);
+        etcelular   = (EditText)findViewById(R.id.etaddcellphone);
+        etemail     = (EditText)findViewById(R.id.etaddemail);
+        etdireccion = (EditText)findViewById(R.id.etaddaddress);
+        etlatitud   = (EditText)findViewById(R.id.etaddlatitude);
+        etlongitud  = (EditText)findViewById(R.id.etaddlongitude);
+        etdate      = (EditText) findViewById(R.id.etfecha);
+        btnfecha    = (Button)findViewById(R.id.btndate);
         btnagregar  = (Button)findViewById(R.id.btnadd);
         btncancelar = (Button)findViewById(R.id.btncancel);
         //btnmapa     = (Button)findViewById(R.id.btnaddmaps);
+
         btnfecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,10 +81,51 @@ public class MainRegisterClientActivity extends AppCompatActivity {
 
                 Log.d("LVVD","Date:"+year+"/"+month+"/"+dayOfMonth);
                 String date = month+"/"+dayOfMonth+"/"+year;
-                tvdate.setText(date);
+                etdate.setText(date);
             }
         };
+        btnagregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                String nombre   = etnombre.getText().toString();
+                String apellido = etapellido.getText().toString();
+                String cedula   = etci.getText().toString();
+                String celular  = etcelular.getText().toString();
+                String email    = etemail.getText().toString();
+                String direccion= etdireccion.getText().toString();
+                String latitud  = etlatitud.getText().toString();
+                String longitud = etlongitud.getText().toString();
+                String fecha    = etdate.getText().toString();
+
+                if(TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) || TextUtils.isEmpty(cedula) || TextUtils.isEmpty(celular) || TextUtils.isEmpty(email) || TextUtils.isEmpty(direccion) || TextUtils.isEmpty(latitud) || TextUtils.isEmpty(longitud) || TextUtils.isEmpty(fecha)){
+
+                    Toast.makeText(getApplicationContext(),"NO DEBEN HABER CAMPOS VACIOS",Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    ModelClient client =new ModelClient(nombre,apellido,cedula,Integer.parseInt(celular),email,direccion,latitud,longitud,fecha);
+                    int i = MainActivity.adminDataBase.addClient(client);
+
+                    if(i>0){
+                        Toast.makeText(getApplicationContext(),"Cliente añadido",Toast.LENGTH_LONG).show();
+                        etnombre.setText("");
+                        etapellido.setText("");
+                        etci.setText("");
+                        etcelular.setText("");
+                        etemail.setText("");
+                        etdireccion.setText("");
+                        etlatitud.setText("");
+                        etlongitud.setText("");
+                        etdate.setText("");
+
+                    }else{
+                        Toast.makeText(getApplicationContext(),"PRODUCTO NO AÑADIDO",Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            }
+        });
     }
 
 

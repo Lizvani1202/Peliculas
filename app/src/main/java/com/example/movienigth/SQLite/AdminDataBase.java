@@ -41,18 +41,21 @@ public class AdminDataBase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS client");
     }
 
-    public void addClient(ModelClient modelClient){
+    public int addClient(ModelClient modelClient){
+        SQLiteDatabase db =this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id_client",modelClient.getId_client());
-        values.put("ci",modelClient.getCi());
         values.put("first_name",modelClient.getFirst_name());
         values.put("last_name",modelClient.getLast_name());
+        values.put("ci",modelClient.getCi());
         values.put("cellphone",modelClient.getCellphone());
-        values.put("birthdate",modelClient.getBirthdate());
         values.put("email",modelClient.getEmail());
         values.put("address",modelClient.getAddress());
         values.put("latitude",modelClient.getLatitude());
         values.put("longitude",modelClient.getLongitude());
+        values.put("birthdate",modelClient.getBirthdate());
         values.put("status",modelClient.getStatus());
+        int i =(int)db.insert("client",null,values);
+        return i;
     }
 }

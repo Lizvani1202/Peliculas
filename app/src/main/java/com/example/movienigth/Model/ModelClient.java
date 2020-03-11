@@ -3,29 +3,41 @@ package com.example.movienigth.Model;
 public class ModelClient {
 
     int id_client;
-    String ci;
     String first_name;
     String last_name;
+    String ci;
     int cellphone;
-    String birthdate;
     String email;
     String address;
     String latitude;
     String longitude;
+    String birthdate;
     int status;
 
-    public ModelClient(int id_client, String ci, String first_name, String last_name, int cellphone, String birthdate, String email, String address, String latitude, String longitude, int status) {
+    public ModelClient(int id_client, String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate, int status) {
         this.id_client = id_client;
-        this.ci = ci;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.ci = ci;
         this.cellphone = cellphone;
-        this.birthdate = birthdate;
         this.email = email;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.birthdate = birthdate;
         this.status = status;
+    }
+
+    public ModelClient(String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.ci = ci;
+        this.cellphone = cellphone;
+        this.email = email;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.birthdate = birthdate;
     }
 
     public int getId_client() {
@@ -34,14 +46,6 @@ public class ModelClient {
 
     public void setId_client(int id_client) {
         this.id_client = id_client;
-    }
-
-    public String getCi() {
-        return ci;
-    }
-
-    public void setCi(String ci) {
-        this.ci = ci;
     }
 
     public String getFirst_name() {
@@ -60,20 +64,20 @@ public class ModelClient {
         this.last_name = last_name;
     }
 
+    public String getCi() {
+        return ci;
+    }
+
+    public void setCi(String ci) {
+        this.ci = ci;
+    }
+
     public int getCellphone() {
         return cellphone;
     }
 
     public void setCellphone(int cellphone) {
         this.cellphone = cellphone;
-    }
-
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
     }
 
     public String getEmail() {
@@ -106,6 +110,14 @@ public class ModelClient {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public int getStatus() {
