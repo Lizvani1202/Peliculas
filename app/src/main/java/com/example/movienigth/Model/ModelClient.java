@@ -1,7 +1,5 @@
 package com.example.movienigth.Model;
 
-import java.text.DecimalFormat;
-
 public class ModelClient {
 
     int id_client;

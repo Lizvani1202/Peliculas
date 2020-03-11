@@ -22,16 +22,16 @@ public class AdminDataBase extends SQLiteOpenHelper {
 
         db.execSQL("PRAGMA foreign_key = ON");
         String sql ="CREATE TABLE client(id_client INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "                    ci TEXT,"+
-                    "                    first_name TEXT," +
-                    "                    last_name TEXT," +
-                    "                    cellphone INTEGER," +
-                    "                    birthdate TEXT," +
-                    "                    email TEXT,"+
-                    "                    address TEXT,"+
-                    "                    latitude TEXT,"+
-                    "                    longitude TEXT,"+
-                    "                    status INTEGER)";
+                "                    ci TEXT,"+
+                "                    first_name TEXT," +
+                "                    last_name TEXT," +
+                "                    cellphone INTEGER," +
+                "                    birthdate TEXT," +
+                "                    email TEXT,"+
+                "                    address TEXT,"+
+                "                    latitude TEXT,"+
+                "                    longitude TEXT,"+
+                "                    status INTEGER)";
         db.execSQL(sql);
 
     }
