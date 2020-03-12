@@ -3,6 +3,7 @@ package com.example.movienigth.Model;
 public class ModelClient {
 
     int id_client;
+    int id;
     String first_name;
     String last_name;
     String ci;
@@ -14,8 +15,8 @@ public class ModelClient {
     String birthdate;
     int status;
 
-    public ModelClient(int id_client, String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate, int status) {
-        this.id_client = id_client;
+    public ModelClient(int id, String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate, int status) {
+        this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.ci = ci;
@@ -28,7 +29,9 @@ public class ModelClient {
         this.status = status;
     }
 
-    public ModelClient(String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate, int status) {
+    public ModelClient(int id_client, int id, String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate, int status) {
+        this.id_client = id_client;
+        this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.ci = ci;
@@ -47,6 +50,14 @@ public class ModelClient {
 
     public void setId_client(int id_client) {
         this.id_client = id_client;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirst_name() {

@@ -22,7 +22,7 @@ import java.util.Calendar;
 public class MainRegisterClientActivity extends AppCompatActivity {
 
     Button btnagregar, btncancelar,btnmapa,btnfecha;
-    EditText etnombre,etapellido,etci,etcelular,etemail,etdireccion,etlatitud,etlongitud;
+    EditText etid,etnombre,etapellido,etci,etcelular,etemail,etdireccion,etlatitud,etlongitud;
     private EditText etdate;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
     @Override
@@ -30,6 +30,7 @@ public class MainRegisterClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_register_client);
 
+        etid        = (EditText)findViewById(R.id.etaddid);
         etnombre    = (EditText)findViewById(R.id.etaddfirstname);
         etapellido  = (EditText)findViewById(R.id.etaddlastname);
         etci        = (EditText)findViewById(R.id.etaddci);
@@ -70,10 +71,17 @@ public class MainRegisterClientActivity extends AppCompatActivity {
                 etdate.setText(date);
             }
         };
+        btncancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         btnagregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                String id       = etid.getText().toString();
                 String nombre   = etnombre.getText().toString();
                 String apellido = etapellido.getText().toString();
                 String cedula   = etci.getText().toString();
@@ -84,14 +92,14 @@ public class MainRegisterClientActivity extends AppCompatActivity {
                 String longitud = etlongitud.getText().toString();
                 String fecha    = etdate.getText().toString();
 
-                if(TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) || TextUtils.isEmpty(cedula) || TextUtils.isEmpty(celular) || TextUtils.isEmpty(email) || TextUtils.isEmpty(direccion) || TextUtils.isEmpty(latitud) || TextUtils.isEmpty(longitud) || TextUtils.isEmpty(fecha)){
+                if(TextUtils.isEmpty(id) || TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) || TextUtils.isEmpty(cedula) || TextUtils.isEmpty(celular) || TextUtils.isEmpty(email) || TextUtils.isEmpty(direccion) || TextUtils.isEmpty(latitud) || TextUtils.isEmpty(longitud) || TextUtils.isEmpty(fecha)){
 
                     Toast.makeText(getApplicationContext(),"NO DEBEN HABER CAMPOS VACIOS",Toast.LENGTH_LONG).show();
 
 
                 }else{
 
-                    ModelClient client =new ModelClient(nombre,apellido,cedula,Integer.parseInt(celular),email,direccion,latitud,longitud,fecha,1);
+                    ModelClient client =new ModelClient(Integer.parseInt(id),nombre,apellido,cedula,Integer.parseInt(celular),email,direccion,latitud,longitud,fecha,1);
 
                     int i = MainActivity.adminDataBase.addClient(client);
 
@@ -99,6 +107,7 @@ public class MainRegisterClientActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Cliente añadido",Toast.LENGTH_LONG).show();
                         InputMethodManager imm1 = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
                         imm1.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                        etid.setText("");
                         etnombre.setText("");
                         etapellido.setText("");
                         etci.setText("");
@@ -108,6 +117,8 @@ public class MainRegisterClientActivity extends AppCompatActivity {
                         etlatitud.setText("");
                         etlongitud.setText("");
                         etdate.setText("");
+                        Intent intent = new Intent(MainRegisterClientActivity.this,MainActivity.class);
+                        startActivity(intent);
 
 
                     }else{

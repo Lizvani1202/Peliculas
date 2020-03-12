@@ -28,7 +28,7 @@
             android:title="baja de video" />
 
         <item
-            android:id="@+id/nav_edit_person"
+            android:id="@+id/nav_edit_client"
             android:icon="@drawable/ic_edit_person"
             android:title="Editar cliente" />
         <item
@@ -38,7 +38,7 @@
 
     </group>
 
-    <item android:title="Registros">
+    <item android:title="Listas">
         <menu>
             <item
                 android:id="@+id/nav_list_client"
@@ -48,5 +48,6 @@
 
         </menu>
     </item>
+
 
 </menu>

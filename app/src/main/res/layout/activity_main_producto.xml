@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0DED4"
-
-    tools:context=".Main.MainRegisterClientActivity">
+    tools:context=".Main.MainProductoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,12 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="AGREGAR CLIENTE"
+            android:text="AGREGAR PRODUCTO"
             android:textSize="30dp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etaddid"
+            android:id="@+id/etaddPid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -32,104 +31,66 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etaddfirstname"
+            android:id="@+id/etaddnamemovie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el nombre"
+            android:hint="Ingrese el nombre de Pelicula"
+            android:inputType="text"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/etaddnamemovie2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el nombre de Pelicula"
+            android:inputType="text"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/etaddnamemovie3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el nombre de Pelicula"
+            android:inputType="text"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etaddgenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el genero"
             android:inputType="text"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etaddlastname"
+            android:id="@+id/etaddduration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el apellido"
-            android:inputType="text"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/etaddci"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingresar cedula"
+            android:hint="Ingresar la tiempo(min)"
             android:inputType="number"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etaddcellphone"
+            android:id="@+id/etaddyear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingresar telefono"
+            android:hint="Ingresar año"
             android:inputType="number"
             android:textStyle="bold" />
         <EditText
-            android:id="@+id/etaddemail"
+            android:id="@+id/etaddunit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingresar Email"
-            android:inputType="textEmailAddress"
+            android:hint="Ingresar el Costo"
+            android:inputType="numberDecimal"
             android:textStyle="bold" />
         <EditText
-            android:id="@+id/etaddaddress"
+            android:id="@+id/etaddstock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingresar direccion"
-            android:inputType="text"
+            android:hint="Ingresar stock"
+            android:inputType="number"
             android:textStyle="bold"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="3"
-            android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etaddlatitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ingresar Latitud"
-                android:inputType="text"
-                android:textStyle="bold"
-                android:layout_weight="1.5"/>
-            <EditText
-                android:id="@+id/etaddlongitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ingresar Longitud"
-                android:inputType="text"
-                android:textStyle="bold"
-                android:layout_weight="1.5"/>
-            <Button
-                android:id="@+id/btnaddmaps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_map_black_24dp"
-                />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-
-            <EditText
-                android:id="@+id/etfecha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/btndate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/ic_date_range_black_24dp"
-                />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

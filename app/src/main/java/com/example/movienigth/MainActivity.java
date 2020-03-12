@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.movienigth.Fragments.ListClientFragment;
+import com.example.movienigth.Main.MainEditClientActivity;
+import com.example.movienigth.Main.MainProductoActivity;
 import com.example.movienigth.Main.MainRegisterClientActivity;
 import com.example.movienigth.SQLite.AdminDataBase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,9 +25,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.fragment.app.ListFragment;
 
 import android.view.Menu;
 
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity
 
     ListClientFragment listClientFragment;
     public static AdminDataBase adminDataBase;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        adminDataBase = new AdminDataBase(this,"BD",null,5);
+        adminDataBase = new AdminDataBase(this,"BD",null,10);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        listClientFragment = new ListClientFragment();
     }
 
     @Override
@@ -98,9 +101,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
         if (id == R.id.nav_register_video) {
+
+            Intent intent = new Intent(MainActivity.this, MainProductoActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_register_new_copies) {
 
@@ -110,13 +114,16 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, MainRegisterClientActivity.class);
             startActivity(intent);
 
-        } else if(id == R.id.nav_edit_person){
+        } else if(id == R.id.nav_edit_client){
+            Intent intent = new Intent(MainActivity.this, MainEditClientActivity.class);
+            startActivity(intent);
 
         }else if (id == R.id.nav_lend_video){
 
         }else if(id == R.id.nav_list_client){
-            ft.replace(R.id.contenedorMain,new ListClientFragment()).commit();
-            return false;
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.contenedorMain,listClientFragment);
+            ft.commit();
 
         }
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E0DED4"
-
-    tools:context=".Main.MainRegisterClientActivity">
+    tools:context=".Main.MainEditClientActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,59 +18,79 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="AGREGAR CLIENTE"
+            android:text="EDITAR CLIENTE"
             android:textSize="30dp"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+
+            <EditText
+                android:id="@+id/etbsci"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Buscar"
+                />
+            <Button
+                android:id="@+id/btneditbuscar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buscar"/>
+            <Button
+                android:id="@+id/btneditnuevo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nuevo"/>
+        </LinearLayout>
+
         <EditText
-            android:id="@+id/etaddid"
+            android:id="@+id/eteditfirstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:hint="Ingrese el id"
-            android:inputType="text"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/etaddfirstname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint="Ingrese el nombre"
             android:inputType="text"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etaddlastname"
+            android:id="@+id/eteditlastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el apellido"
+            android:inputType="text"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/eteditci"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese el apellido"
             android:inputType="text"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etaddci"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingresar cedula"
-            android:inputType="number"
-            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etaddcellphone"
+            android:id="@+id/eteditellphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingresar telefono"
             android:inputType="number"
             android:textStyle="bold" />
         <EditText
-            android:id="@+id/etaddemail"
+            android:id="@+id/eteditemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingresar Email"
             android:inputType="textEmailAddress"
             android:textStyle="bold" />
         <EditText
-            android:id="@+id/etaddaddress"
+            android:id="@+id/eteditaddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingresar direccion"
@@ -83,7 +103,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/etaddlatitude"
+                android:id="@+id/eteditlatitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingresar Latitud"
@@ -91,7 +111,7 @@
                 android:textStyle="bold"
                 android:layout_weight="1.5"/>
             <EditText
-                android:id="@+id/etaddlongitude"
+                android:id="@+id/eteditlongitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingresar Longitud"
@@ -99,7 +119,7 @@
                 android:textStyle="bold"
                 android:layout_weight="1.5"/>
             <Button
-                android:id="@+id/btnaddmaps"
+                android:id="@+id/btneditmaps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_map_black_24dp"
@@ -116,14 +136,14 @@
 
 
             <EditText
-                android:id="@+id/etfecha"
+                android:id="@+id/eteditfecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/btndate"
+                android:id="@+id/btneditdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -139,7 +159,7 @@
 
 
             <Button
-                android:id="@+id/btnadd"
+                android:id="@+id/btnedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

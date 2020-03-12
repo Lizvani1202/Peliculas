@@ -1,11 +1,13 @@
 package com.example.movienigth.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +67,7 @@ public class ListClientFragment extends Fragment {
 
         lista = MainActivity.adminDataBase.listClient();
         if(lista.size()>0){
+
             final AdapterClient adapterClient = new AdapterClient(getActivity(),lista);
             listView.setAdapter(adapterClient);
 
@@ -86,5 +89,25 @@ public class ListClientFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getActivity(), "Menu Principal", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 }
