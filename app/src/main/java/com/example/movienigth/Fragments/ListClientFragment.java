@@ -9,10 +9,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.movienigth.Adapter.AdapterClient;
+import com.example.movienigth.MainActivity;
+import com.example.movienigth.Model.ModelClient;
 import com.example.movienigth.R;
 
+import java.util.List;
+
 public class ListClientFragment extends Fragment {
+
+    ListView listView;
+    List<ModelClient> lista;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -46,9 +57,20 @@ public class ListClientFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_list_client,container,false);
+
+        listView = (ListView)view.findViewById(R.id.idListViewClient);
+
+        lista = MainActivity.adminDataBase.listClient();
+        if(lista.size()>0){
+            final AdapterClient adapterClient = new AdapterClient(getActivity(),lista);
+            listView.setAdapter(adapterClient);
+
+        }else{
+            Toast.makeText(getContext(), "No existen clientes registrados", Toast.LENGTH_SHORT).show();
+        }
         return inflater.inflate(R.layout.fragment_list_client, container, false);
     }
 

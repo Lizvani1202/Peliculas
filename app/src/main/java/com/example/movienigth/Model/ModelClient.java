@@ -28,7 +28,7 @@ public class ModelClient {
         this.status = status;
     }
 
-    public ModelClient(String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate) {
+    public ModelClient(String first_name, String last_name, String ci, int cellphone, String email, String address, String latitude, String longitude, String birthdate, int status) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.ci = ci;
@@ -38,6 +38,7 @@ public class ModelClient {
         this.latitude = latitude;
         this.longitude = longitude;
         this.birthdate = birthdate;
+        this.status = status;
     }
 
     public int getId_client() {

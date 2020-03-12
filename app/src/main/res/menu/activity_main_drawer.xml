@@ -38,5 +38,15 @@
 
     </group>
 
+    <item android:title="Registros">
+        <menu>
+            <item
+                android:id="@+id/nav_list_client"
+                android:icon="@drawable/ic_list_black_24dp"
+                android:title="Lista de Clientes" />
+
+
+        </menu>
+    </item>
 
 </menu>

@@ -17,7 +17,7 @@
         android:textStyle="bold"/>
 
     <ListView
-        android:id="@+id/idListViewClientes"
+        android:id="@+id/idListViewClient"
         android:layout_margin="15dp"
         android:layout_below="@+id/tv"
         android:textAlignment="viewStart"

@@ -1,8 +1,10 @@
 package com.example.movienigth;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import com.example.movienigth.Fragments.ListClientFragment;
 import com.example.movienigth.Main.MainRegisterClientActivity;
 import com.example.movienigth.SQLite.AdminDataBase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,12 +23,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.ListFragment;
 
 import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements  NavigationView.OnNavigationItemSelectedListener,
+                    ListClientFragment.OnFragmentInteractionListener {
 
+    ListClientFragment listClientFragment;
     public static AdminDataBase adminDataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        adminDataBase = new AdminDataBase(this,"BD",null,1);
+        adminDataBase = new AdminDataBase(this,"BD",null,5);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +51,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.contenedorMain);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -55,7 +62,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.contenedorMain);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -91,6 +98,8 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
         if (id == R.id.nav_register_video) {
 
         } else if (id == R.id.nav_register_new_copies) {
@@ -105,10 +114,19 @@ public class MainActivity extends AppCompatActivity
 
         }else if (id == R.id.nav_lend_video){
 
+        }else if(id == R.id.nav_list_client){
+            ft.replace(R.id.contenedorMain,new ListClientFragment()).commit();
+            return false;
+
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.contenedorMain);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

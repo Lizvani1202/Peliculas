@@ -1,7 +1,6 @@
 package com.example.movienigth.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,27 +9,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.movienigth.MainActivity;
 import com.example.movienigth.Model.ModelClient;
 import com.example.movienigth.R;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
-import com.example.movienigth.MainActivity;
-import com.example.movienigth.R;
-
 import java.util.Calendar;
 
 public class MainRegisterClientActivity extends AppCompatActivity {
@@ -102,13 +88,17 @@ public class MainRegisterClientActivity extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(),"NO DEBEN HABER CAMPOS VACIOS",Toast.LENGTH_LONG).show();
 
+
                 }else{
 
-                    ModelClient client =new ModelClient(nombre,apellido,cedula,Integer.parseInt(celular),email,direccion,latitud,longitud,fecha);
+                    ModelClient client =new ModelClient(nombre,apellido,cedula,Integer.parseInt(celular),email,direccion,latitud,longitud,fecha,1);
+
                     int i = MainActivity.adminDataBase.addClient(client);
 
                     if(i>0){
                         Toast.makeText(getApplicationContext(),"Cliente añadido",Toast.LENGTH_LONG).show();
+                        InputMethodManager imm1 = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
+                        imm1.hideSoftInputFromWindow(v.getWindowToken(), 0);
                         etnombre.setText("");
                         etapellido.setText("");
                         etci.setText("");
@@ -118,6 +108,7 @@ public class MainRegisterClientActivity extends AppCompatActivity {
                         etlatitud.setText("");
                         etlongitud.setText("");
                         etdate.setText("");
+
 
                     }else{
                         Toast.makeText(getApplicationContext(),"PRODUCTO NO AÑADIDO",Toast.LENGTH_LONG).show();
@@ -132,8 +123,10 @@ public class MainRegisterClientActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(MainRegisterClientActivity.this, MainRegisterClientActivity.class);
+
+        Intent intent = new Intent(MainRegisterClientActivity.this, MainActivity.class);
         startActivity(intent);
+
         Toast.makeText(getApplicationContext(),"Debe agregar o cancelar la funcion",Toast.LENGTH_LONG).show();
     }
 }
